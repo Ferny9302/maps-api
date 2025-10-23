@@ -40,11 +40,19 @@ function clearMarkers() {
 }
 async function addMarkerAndDisplay(place, bounds) {
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+  
+    const restaurantIcon = document.createElement("img");
+    restaurantIcon.src = "https://cdn-icons-png.flaticon.com/64/1160/1160662.png"; 
+    restaurantIcon.width = 32;  
+    restaurantIcon.height = 32;
+    
   
     const marker = new AdvancedMarkerElement({
       map,
       position: place.location,
       title: place.displayName,
+      content: restaurantIcon, 
     });
 
     bounds.extend(place.location);
